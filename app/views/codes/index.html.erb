@@ -1,5 +1,5 @@
 <% @kind.each do |kind| %>
-  <p><a href="" class="kind"><%= kind.kind %> (<%=kind.codes.count%> Snippets)</a></p>
+  <div class="kind"><%= kind.kind %> (<%=kind.codes.count%> Snippets)
   <ul class="list">
     <% kind.codes.each do |code| %>
     <%if code.is_private %>
@@ -11,4 +11,11 @@
     <%end%>
     <% end %>
   </ul>
+  </div>
 <% end %>
+
+<!-- <script>
+ $(".kind").click(function(){
+   $(this).find(".list").css({"display":"block","color":"red"})
+ })
+</script> -->

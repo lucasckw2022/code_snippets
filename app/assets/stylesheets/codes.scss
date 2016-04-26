@@ -1,0 +1,8 @@
+// Place all the styles related to the codes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.content-box{display:flex;margin: 0 15px 15px 0;}
+.title,label{width:10%;}
+.content-box textarea{width:20%;height:150px;}
+.content-box input,.content-box select{width:20%;}
+// .content{float:right;width:80%}

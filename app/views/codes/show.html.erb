@@ -1,0 +1,17 @@
+<h1><%= @code.title %></h1>
+<div class="content-box">
+  <div class="title">Kind : </div>
+  <div class="content"><%= @code.kind.kind%></div>
+</div>
+<div class="content-box">
+  <div class="title">Title : </div>
+  <div class="content"><%= @code.title%></div>
+</div>
+<div class="content-box">
+  <div class="title">Work : </div>
+  <div class="content"><%= markdown(@code.work)%></div>
+</div>
+<% if can? :manage, @code%>
+<%= link_to "Edit Snippet", edit_code_path(@code)%>
+<%= link_to "Remove Snippet", code_path(@code), method: :delete, data:{confirm:"Are you sure to remove this snippet?"}%>
+<%end%>

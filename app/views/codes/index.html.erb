@@ -1,0 +1,14 @@
+<% @kind.each do |kind| %>
+  <p><a href="" class="kind"><%= kind.kind %> (<%=kind.codes.count%> Snippets)</a></p>
+  <ul class="list">
+    <% kind.codes.each do |code| %>
+    <%if code.is_private %>
+      <% if code.user == current_user %>
+      <li><%= link_to code.title, code_path(code) %></li>
+      <%end%>
+    <%else%>
+      <li><%= link_to code.title, code_path(code) %></li>
+    <%end%>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CodeSnippets</title>
+  <%= stylesheet_link_tag    'normalize', 'data-turbolinks-track' => true %>
+  <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+  <h1>Code Snippets</h1>
+  <div class="">
+    <%= link_to "Homepage", codes_path%> |
+    <%= link_to "New Snippet",new_code_path%> |
+    <% if session[:user_id]%>
+      Hello, <%= current_user.first_name%> |
+      <%= link_to "Sign Out", session_path(current_user), method: :delete,data:{confirm:"Are you sure to sign out?"}%>
+    <%else%>
+      <%= link_to "Sign In", new_session_path%> |
+      <%= link_to "Sign Up", new_user_path%>
+    <%end%>
+  </div>
+<hr>
+  <div>
+    <%= notice %>
+  </div>
+<%= yield %>
+<script>
+ document.getElementsByClassName("kind").click(
+   document.getElementsByClassName("list").style.visibility="visible"
+ )
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<%= @code.errors.full_messages.join(", ")%>
+<%= form_for @code do |f|%>
+<div class="content-box">
+  <%= f.label :kind,"Kind :"%>
+  <%= f.collection_select :kind_id, Kind.order(:id),:id,:kind,prompt: "Select a Kind" %>
+</div>
+<div class="content-box">
+  <%= f.label :title,"Title :"%>
+  <%= f.text_field :title%>
+</div>
+<div class="content-box">
+  <%= f.label :work,"Work :"%>
+  <%= f.text_area :work%>
+</div>
+<div class="">
+  <%= f.label :is_private,"Is private?"%>
+  <%= f.check_box :is_private%>
+</div>
+<%= f.submit%>
+<% end %>

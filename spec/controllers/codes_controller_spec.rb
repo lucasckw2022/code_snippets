@@ -17,7 +17,7 @@ RSpec.describe CodesController, type: :controller do
   describe "#create"do
     context "with valid data" do
       before do create_kind end
-      let(:valid_code) {post :create, code: FactoryGirl.attributes_for(:code)}
+      let(:valid_code) {post :create, code: FactoryGirl.attributes_for(:code).merge(kind_id: create_kind.id)}
       it "save data to database" do
         before = Code.count
         valid_code
@@ -54,29 +54,44 @@ RSpec.describe CodesController, type: :controller do
   end
 
   describe "#edit" do
-    it "render template"
-    it "sets an instance varible with the passed id"
+    before do get :edit,
+       id: create_code
+     end
+    it "render template" do
+      expect(response).to render_template(:edit)
+    end
+    it "sets an instance varible with the passed id" do
+      expect(assigns(:code)).to eq(Code.last)
+    end
   end
 
   describe "#update" do
     context "with valid data" do
-      it "updates the record whose id is passed"
-      it "redirect to show page"
-      it "flash message"
+      let(:valid_title){"Hello"}
+      before do
+        patch :update, id: create_code, code: {title: valid_title}
+         end
+      it "updates the record whose id is passed" do
+        expect(create_code.reload.title).to eq(valid_title)
+      end
+      it "redirect to show page" do
+        expect(response).to redirect_to(code_path(Code.last))
+      end
+      it "flash message" do
+        expect(flash[:notice]).to be
+      end
     end
     context "with invalid data"do
-      it "do not update the record"
-      it "render edit page"
+      before do
+        patch :update, id: create_code, code: {title: nil}
+      end
+      it "do not update the record" do
+        expect(create_code.title).to eq(create_code.reload.title)
+      end
+      it "render edit page" do
+        expect(response).to render_template(:edit)
+      end
     end
-  end
-
-  describe "#show" do
-    it "render show page"
-    it "assign a varible "
-  end
-
-  describe "destroy" do
-
   end
 
 end

@@ -4,6 +4,5 @@ class Code < ActiveRecord::Base
 
   validates :title, presence: true
   validates :work, presence: true
-  validates :kind_id, presence: true
-
+  validates :kind, presence: true
 end

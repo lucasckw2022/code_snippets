@@ -4,10 +4,10 @@
     <% kind.codes.each do |code| %>
     <%if code.is_private %>
       <% if code.user == current_user %>
-      <li><%= link_to code.title, code_path(code) %></li>
+      <li><%= link_to  code.title, code_path(code) %> - Created by: <%=code.user.first_name%></li>
       <%end%>
     <%else%>
-      <li><%= link_to code.title, code_path(code) %></li>
+      <li><%= link_to code.title, code_path(code) %> - Created by: <%=code.user.first_name%></li>
     <%end%>
     <% end %>
   </ul>

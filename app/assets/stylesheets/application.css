@@ -17,3 +17,8 @@
  body{width:80%; margin: 0 auto; font-family: 'Jura', sans-serif;}
  ul{ list-style: none;}
  a:hover{color:orange;}
+
+ .content-box{display:flex;margin: 0 15px 15px 0;}
+ .title,label{width:15%;min-width:100px}
+ .content-box textarea{width:30%;min-width:200px;height:150px;}
+ .content-box input,.content-box select{width:30%;min-width:200px;}
